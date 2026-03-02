@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; background: #f4f4f4; padding: 20px; border-radius: 8px; }
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .task-item:last-child { border-bottom: none; }
+        .completed { text-decoration: line-through; color: gray; }
+        input[type="text"], input[type="password"] { padding: 8px; margin: 5px 0; width: calc(100% - 16px); border-radius: 4px; border: 1px solid #ddd; }
+        button { padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .auth-section { margin-bottom: 20px; padding: 15px; background: #e9ecef; border-radius: 8px; }
+        #task-list { list-style: none; padding: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="auth-view">
+            <h2>Login / Register</h2>
+            <div id="login-section">
+                <h3>Login</h3>
+                <input type="text" id="login-username" placeholder="Username">
+                <input type="password" id="login-password" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <p id="login-message" style="color: red;"></p>
+            </div>
+            <div id="register-section">
+                <h3>Register</h3>
+                <input type="text" id="register-username" placeholder="Username">
+                <input type="password" id="register-password" placeholder="Password">
+                <button onclick="register()">Register</button>
+                <p id="register-message" style="color: green;"></p>
+            </div>
+        </div>
+
+        <div id="app-view" style="display: none;">
+            <h1 id="welcome-message"></h1>
+            <button onclick="logout()">Logout</button>
+
+            <h2>Add New Task</h2>
+            <input type="text" id="new-task-description" placeholder="Task description">
+            <button onclick="addTask()">Add Task</button>
+
+            <h2>Your Tasks</h2>
+            <ul id="task-list"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

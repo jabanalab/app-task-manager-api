@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        .completed { text-decoration: line-through; color: gray; }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <a href="/logout">Logout</a>
+
+    <h2>Add New Task</h2>
+    <form method="POST" action="/add_task">
+        <input type="text" name="description" placeholder="Task description" required>
+        <input type="submit" value="Add Task">
+    </form>
+
+    <h2>Your Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <span class="{% if task.completed %}completed{% endif %}">{{ task.description | safe }}</span>
+                {% if not task.completed %}
+                    <a href="/complete_task/{{ task.id }}">Mark Complete</a>
+                {% endif %}
+                <a href="/delete_task/{{ task.id }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
